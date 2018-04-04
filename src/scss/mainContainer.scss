@@ -58,6 +58,14 @@ html {
                     button {
                         
                         @include button-style();
+                        &#clearBtn{
+                           background-color: peru;
+                        }
+
+                        
+                        &#zeroBtn{
+                            width: 107px;
+                        }
                     }
                 }
             }
@@ -80,10 +88,12 @@ html {
                         color: burlywood;
                         @include button-style();
                         margin-left:0px;
-                        .calculateBtn{
+                        &#calculateBtn{
+                            background-color: rgb(189, 189, 189);
                             height: 75px;
                         }
                     }
+                   
                 }
             }
         }
