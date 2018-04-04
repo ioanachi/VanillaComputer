@@ -8,8 +8,12 @@
 -moz-box-shadow: 0px 7px 14px -10px rgba(135,135,135,1);
 box-shadow: 0px 7px 14px -10px rgba(135,135,135,1);
 }
-
-$border-curved: 1px solid #e0e0e0;
+@mixin input-shadow() {
+    -webkit-box-shadow: 1px 10px 20px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 10px 20px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 10px 20px -1px rgba(0, 0, 0, 0.75);
+}
+$border-curved: 1px solid #d3d3d3;
 @mixin button-style() {
     width: 50px;
     padding: 11px;
@@ -42,17 +46,16 @@ html {
             display: flex;
             align-items: center;
             justify-content: center;
+            
             .squareContainer {
                 @include border-radius(10px);
+                @include input-shadow();
                 background-color: rgb(236, 231, 231);
-                -webkit-box-shadow: 1px 10px 20px -1px rgba(0, 0, 0, 0.75);
-                -moz-box-shadow: 1px 10px 20px -1px rgba(0, 0, 0, 0.75);
-                box-shadow: 1px 10px 20px -1px rgba(0, 0, 0, 0.75);
                 margin-top: 30px;
                 padding: 10px;
                 width: 250px;
                 height: 310px;
-                border: 1px solid #d6d6d6;
+                border: 1px solid #f0f0f0;
                 #displayBox {
                     height: 40px;
                     width: 100%;
