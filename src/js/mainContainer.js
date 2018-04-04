@@ -1,6 +1,7 @@
 var clearBtn = document.getElementById("clearBtn");
 var displayBox = document.getElementById("displayBox");
 function displayFunction(index) {
+    event.preventDefault()
     switch (index.srcElement.textContent) {
         case "=":
             var strToEval = displayBox.value;
