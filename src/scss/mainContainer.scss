@@ -1,24 +1,32 @@
 @mixin border-radius($radius) {
-    -border-radius: 2px 2px 2px 2px;
-    -moz-border-radius: 2px 2px 2px 2px;
-    -webkit-border-radius: 2px 2px 2px 2px;
-}
-
-@mixin border-buttons() {
-    border-radius: 2px 2px 2px 2px;
-    -moz-border-radius: 2px 2px 2px 2px;
-    -webkit-border-radius: 2px 2px 2px 2px;
-    border: 1px outset #dedede;
+    -border-radius: $radius;
+    -moz-border-radius: $radius;
+    -webkit-border-radius: $radius;
 }
 
 $border-curved: 1px solid #e0e0e0;
 @mixin button-style() {
     width: 50px;
-    padding: 9px;
+    padding: 11px;
     margin: 2px;
     background-color: #f5f5f5;
+    border: 1px outset #dedede;
     color: rgb(95, 95, 94);
-    @include border-buttons();
+    
+    
+    @include border-radius(4px);
+    &:hover{
+        cursor: pointer;
+    }
+    &:active{
+        background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(234,234,234,1) 30%, rgba(192,192,192,1) 93%); /* ff3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(255,255,255,1)), color-stop(30%, rgba(234,234,234,1)), color-stop(93%, rgba(192,192,192,1))); /* safari4+,chrome */
+background:-webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(234,234,234,1) 30%, rgba(192,192,192,1) 93%); /* safari5.1+,chrome10+ */
+background: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(234,234,234,1) 30%, rgba(192,192,192,1) 93%); /* opera 11.10+ */
+background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 0%, rgba(234,234,234,1) 30%, rgba(192,192,192,1) 93%); /* ie10+ */
+background:radial-gradient(ellipse at center, rgba(255,255,255,1) 0%, rgba(234,234,234,1) 30%, rgba(192,192,192,1) 93%); /* w3c */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c0c0c0',GradientType=1 ); /* ie6-9 */
+    }
 }
 
 html {
@@ -28,76 +36,87 @@ html {
         width: 100%;
         height: 100%;
         background-color: rgb(211, 247, 238);
-        .squareContainer {
-            background-color: rgb(236, 231, 231);
-            -webkit-box-shadow: 1px 10px 20px -1px rgba(0, 0, 0, 0.75);
-            -moz-box-shadow: 1px 10px 20px -1px rgba(0, 0, 0, 0.75);
-            box-shadow: 1px 10px 20px -1px rgba(0, 0, 0, 0.75);
-            margin-top: 30px;
-            padding: 10px;
-            width: 250px;
-            height: 310px;
-            border: 1px solid #f0f0f0;
-            #displayBox {
-                height: 35px;
-                width: 100%;
-                margin-bottom: 5px;
-                -webkit-box-shadow: inset 1px 5px 22px 1px rgba(48, 48, 48, 0.14);
-                box-shadow: inset 1px 5px 22px 1px rgba(48, 48, 48, 0.14);
-                @include border-radius(2px);
-                border: $border-curved;
-            }
-            #numbersContainer {
-                display: inline-block;
-                width: 170px;
-                // background-color: blue;
-                height: 200px;
-                padding: 0px;
-                margin: 30px 0;
-                .small {
-                    button {
-                        
-                        @include button-style();
-                        &#clearBtn{
-                           background-color: peru;
-                           color: white;
-                           
-                        }
-
-                        
-                        &#zeroBtn{
-                            width: 107px;
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .squareContainer {
+                @include border-radius(7px);
+                
+                background-color: rgb(236, 231, 231);
+                -webkit-box-shadow: 1px 10px 20px -1px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 1px 10px 20px -1px rgba(0, 0, 0, 0.75);
+                box-shadow: 1px 10px 20px -1px rgba(0, 0, 0, 0.75);
+                margin-top: 30px;
+                padding: 10px;
+                width: 250px;
+                height: 310px;
+                border: 1px solid #f0f0f0;
+                #displayBox {
+                    height: 40px;
+                    width: 100%;
+                    margin-bottom: 5px;
+                    -webkit-box-shadow: inset 1px 5px 22px 1px rgba(48, 48, 48, 0.14);
+                    box-shadow: inset 1px 5px 22px 1px rgba(48, 48, 48, 0.14);
+                    @include border-radius(5px);
+                    border: $border-curved;
+                }
+                #numbersContainer {
+                    display: inline-block;
+                    width: 170px;
+                    // background-color: blue;
+                    height: 235px;
+                    padding: 0px;
+                    margin: 10px 0;
+                    .small {
+                        button {
+                            background: linear-gradient(180deg, rgba(255,255,255,0.5) 35%, rgba(230,230,230,1) 85%);
+                            @include button-style();
+                            &#clearBtn{
+                               background: peru;
+                               background-color: peru;
+                               color: white;
+    
+                            }
+    
+                            
+                            &#zeroBtn{
+                                width: 107px;
+                            }
                         }
                     }
                 }
-            }
-            #symbolsContainer {
-                display: inline-block;
-                width: 50px;
-                height: 200px;
-                float: right;
-                padding: 0px;
-                // background-color: rgb(247, 181, 0);
-                margin: 30px 0;
-                .small {
-                    float: right;
-                    height: 200px;
-                    padding: 0px;
+                #symbolsContainer {
                     display: inline-block;
-                    // background-color: red;
-                    button {
-                        background-color: #3f3f3f;
-                        color: burlywood;
-                        @include button-style();
-                        margin-left:0px;
-                        &#calculateBtn{
-                            background-color: rgb(189, 189, 189);
-                            height: 75px;
+                    width: 50px;
+                    height: 235px;
+                    float: right;
+                    padding: 0px;
+                    // background-color: rgb(247, 181, 0);
+                    margin: 10px 0;
+                    .small {
+                        float: right;
+                        height: 200px;
+                        padding: 0px;
+                        display: inline-block;
+                        // background-color: red;
+                        button {
+                            background-color: #3f3f3f;
+                            color: burlywood;
+                            @include button-style();
+                            margin-left:0px;
+                           
+                            &#calculateBtn{
+                                background-color: rgb(189, 189, 189);
+                                height: 81px;
+                            }
+                            
                         }
+                       
                     }
-                   
                 }
             }
         }
+      
     }
 }
